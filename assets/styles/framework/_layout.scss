@@ -1,0 +1,15 @@
+.shots {
+	list-style: none;
+	padding: $shots-padding;
+	li {
+		float: left;
+		width: 25%;
+	}
+	img {
+		display: block;
+		width: 100%;
+	}
+	a {
+		display: block;
+	}
+}

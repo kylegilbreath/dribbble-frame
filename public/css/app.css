@@ -1,0 +1,22 @@
+/*Global variables*/
+/*Shot styles*/
+body {
+  background-color: #e9eaec;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  margin-top: -16px;
+  padding: 0; }
+
+.shots {
+  list-style: none;
+  padding: 0; }
+  .shots li {
+    float: left;
+    width: 25%; }
+  .shots img {
+    display: block;
+    width: 100%; }
+  .shots a {
+    display: block; }
+
+/*# sourceMappingURL=app.css.map */
