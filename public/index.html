@@ -11,7 +11,7 @@
 	<body>
 
 		<ul class="shots"></ul>
-
+		
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/jribbble/dist/jribbble.min.js"></script>
 
@@ -19,13 +19,13 @@
 		$.jribbble.setToken('541c4cf1f3e4640d55ec95aa5a4176585fce7af7e598d76658bca9699b5e402f');
 
 		$.jribbble.shots('debuts', {
-		  'per_page': 36,
-		  'timeframe': 'month',
+		  'per_page': 9,
+		  'timeframe': 'weekly',
 		  'sort': 'views'
 		}).then(function(res) {
 		  var html = [];
 		  res.forEach(function(shot) {
-		    html.push('<li class="shots--shot">');
+		    html.push('<li class="single-shot">');
 		    html.push('<a href="' + shot.html_url + '" target="_blank">');
 		    html.push('<img src="' + shot.images.normal + '">');
 		    html.push('</a></li>');
@@ -33,6 +33,16 @@
 		  
 		  $('.shots').html(html.join(''));
 		});
+
+		var checkExist = setInterval(function() {
+		   	if ($('.single-shot').length) {
+		      	clearInterval(checkExist);
+		      	$(".shots li").each(function(i) {
+					$(this).addClass("shot" + (i+1));
+				});
+		   	}
+		}, 100);
+
 		</script>
 
 	</body>
