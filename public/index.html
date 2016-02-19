@@ -37,8 +37,14 @@
 		var checkExist = setInterval(function() {
 		   	if ($('.single-shot').length) {
 		   		console.log('yeah')
+
 		   		var hiddenShot = $('.shot20 img').attr('src');
-		   		$('.shot1 img').attr('src',eval('hiddenShot'));
+		   			// $('.shot1 img').fadeOut('slow').attr('src',eval('hiddenShot')).fadeIn(1000);
+
+		   			$('.shot1 img').fadeOut(500, function() {
+		   				$('.shot1 img').attr('src',eval('hiddenShot'));
+		   			}).fadeIn(1000);
+
 		      	clearInterval(checkExist)
 		   	}
 		}, 100);
