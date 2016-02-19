@@ -19,13 +19,13 @@
 		$.jribbble.setToken('541c4cf1f3e4640d55ec95aa5a4176585fce7af7e598d76658bca9699b5e402f');
 
 		$.jribbble.shots('debuts', {
-		  'per_page': 9,
+		  'per_page': 24,
 		  'timeframe': 'weekly',
 		  'sort': 'views'
 		}).then(function(res) {
 		  var html = [];
-		  res.forEach(function(shot) {
-		    html.push('<li class="single-shot">');
+		  res.forEach(function(shot,i) {
+		    html.push('<li class="single-shot shot'+ (i+1)+'">');
 		    html.push('<a href="' + shot.html_url + '" target="_blank">');
 		    html.push('<img src="' + shot.images.normal + '">');
 		    html.push('</a></li>');
@@ -36,10 +36,10 @@
 
 		var checkExist = setInterval(function() {
 		   	if ($('.single-shot').length) {
-		      	clearInterval(checkExist);
-		      	$(".shots li").each(function(i) {
-					$(this).addClass("shot" + (i+1));
-				});
+		   		console.log('yeah')
+		   		var hiddenShot = $('.shot20 img').attr('src');
+		   		$('.shot1 img').attr('src',eval('hiddenShot'));
+		      	clearInterval(checkExist)
 		   	}
 		}, 100);
 
