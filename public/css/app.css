@@ -12,7 +12,7 @@ body {
   padding: 0; }
   .shots li {
     float: left;
-    width: 33.33%; }
+    width: 25%; }
   .shots img {
     display: block;
     width: 100%; }

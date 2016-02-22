@@ -25,10 +25,9 @@
 		}).then(function(res) {
 		  var html = [];
 		  res.forEach(function(shot,i) {
-		    html.push('<li class="single-shot shot'+ (i+1)+'">');
-		    html.push('<a href="' + shot.html_url + '" target="_blank">');
+		    html.push('<li class="single-shot shot'+(i+1)+'">');
 		    html.push('<img src="' + shot.images.normal + '">');
-		    html.push('</a></li>');
+		    html.push('</li>');
 		  });
 		  
 		  $('.shots').html(html.join(''));
@@ -38,12 +37,33 @@
 		   	if ($('.single-shot').length) {
 		   		console.log('yeah')
 
-		   		var hiddenShot = $('.shot20 img').attr('src');
+		  //  		var visibleMin = 1;
+				// var visibleMax = 12;
+				// var i = Math.floor(Math.random() * (visibleMax - visibleMin + 1)) + visibleMin;
+
+				// var hiddenMin = 13;
+				// var hiddenMax = 48;
+				// var y = Math.floor(Math.random() * (hiddenMax - hiddenMin + 1)) + hiddenMin;
+				var repeater;
+
+		   		! function transitionShot(){
+
+		   			var visibleMin = 1;
+					var visibleMax = 12;
+					var i = Math.floor(Math.random() * (visibleMax - visibleMin + 1)) + visibleMin;
+
+		   			var visibleShot = $(".shot" + i);
+		   			var hiddenShot = $('.shot20 img').attr('src');
 		   			// $('.shot1 img').fadeOut('slow').attr('src',eval('hiddenShot')).fadeIn(1000);
 
-		   			$('.shot1 img').fadeOut(500, function() {
-		   				$('.shot1 img').attr('src',eval('hiddenShot'));
+		   			$(visibleShot).children('img').fadeOut(500, function() {
+		   				$(visibleShot).children('img').attr('src',eval('hiddenShot'));
 		   			}).fadeIn(1000);
+
+					console.log('I work')
+
+					repeater = setTimeout(transitionShot, 1000);
+				}();
 
 		      	clearInterval(checkExist)
 		   	}
