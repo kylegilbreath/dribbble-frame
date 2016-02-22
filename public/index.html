@@ -19,7 +19,7 @@
 		$.jribbble.setToken('541c4cf1f3e4640d55ec95aa5a4176585fce7af7e598d76658bca9699b5e402f');
 
 		$.jribbble.shots('debuts', {
-		  'per_page': 24,
+		  'per_page': 48,
 		  'timeframe': 'weekly',
 		  'sort': 'views'
 		}).then(function(res) {
@@ -35,15 +35,7 @@
 
 		var checkExist = setInterval(function() {
 		   	if ($('.single-shot').length) {
-		   		console.log('yeah')
 
-		  //  		var visibleMin = 1;
-				// var visibleMax = 12;
-				// var i = Math.floor(Math.random() * (visibleMax - visibleMin + 1)) + visibleMin;
-
-				// var hiddenMin = 13;
-				// var hiddenMax = 48;
-				// var y = Math.floor(Math.random() * (hiddenMax - hiddenMin + 1)) + hiddenMin;
 				var repeater;
 
 		   		! function transitionShot(){
@@ -53,16 +45,24 @@
 					var i = Math.floor(Math.random() * (visibleMax - visibleMin + 1)) + visibleMin;
 
 		   			var visibleShot = $(".shot" + i);
-		   			var hiddenShot = $('.shot20 img').attr('src');
-		   			// $('.shot1 img').fadeOut('slow').attr('src',eval('hiddenShot')).fadeIn(1000);
+		   			var visibleSrc = $(visibleShot).children('img').attr('src');
+
+		   			var hiddenMin = 13;
+					var hiddenMax = 48;
+					var y = Math.floor(Math.random() * (hiddenMax - hiddenMin + 1)) + hiddenMin;
+
+		   			var hiddenShot = $(".shot" + y);
+		   			var hiddenSrc = $(hiddenShot).children('img').attr('src');
 
 		   			$(visibleShot).children('img').fadeOut(500, function() {
-		   				$(visibleShot).children('img').attr('src',eval('hiddenShot'));
+		   				$(visibleShot).children('img').attr('src',eval('hiddenSrc'));
 		   			}).fadeIn(1000);
 
-					console.log('I work')
+		   			$(hiddenShot).children('img').fadeOut(500, function() {
+		   				$(hiddenShot).children('img').attr('src',eval('visibleSrc'));
+		   			}).fadeIn(1000);
 
-					repeater = setTimeout(transitionShot, 1000);
+					repeater = setTimeout(transitionShot, 5000);
 				}();
 
 		      	clearInterval(checkExist)
